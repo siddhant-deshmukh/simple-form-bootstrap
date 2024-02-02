@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.special-bg {
+  background-image: linear-gradient(to bottom, #007281ea, #05d7d0); 
+}
+
+.bg-gray {
+  background-image: linear-gradient(to top, #1F2C4F, #013F5C); 
+}
+
