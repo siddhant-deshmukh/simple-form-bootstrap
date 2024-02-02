@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGODB_ATLAS_URL as string)
   .then(() => { console.log("Connected to database") })
   .catch((err) => { console.error("Unable to connect database", err) })
 
-app.use('/u', userRouter)
+app.use('/', userRouter)
 
 
 app.listen(port, () => {

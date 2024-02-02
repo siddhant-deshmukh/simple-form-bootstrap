@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { body } from 'express-validator';
+import { body, query } from 'express-validator';
 import express, { NextFunction, Request, Response } from 'express'
 
 import auth from './middleware/auth';
@@ -14,10 +14,24 @@ import User, { IUserCreate, IUser } from './user.model';
 dotenv.config();
 var router = express.Router();
 
+router.get('/users',
+  query('limit').optional().isInt({ min: 0, max: 100 }),
+  query('skip').optional().isInt({ min: 0 }),
+  auth,
+  validate,
+  async function (req: Request, res: Response) {
+    try {
+      const { limit = 10, skip = 0 }: { limit?: number, skip?: number } = req.query
+      const users = await User.find().skip(skip).limit(limit)
+      return res.status(200).json({ users })
+    } catch (err) {
+      return res.status(500).json({ msg: 'Some internal error occured', err })
+    }
+  })
 
 // to send information about user
 router.get('/', auth, function (req: Request, res: Response, next: NextFunction) {
-  return res.status(201).json({ user: res.user });
+  return res.status(200).json({ user: res.user });
 });
 
 router.post('/', auth, function (req: Request, res: Response, next: NextFunction) {
@@ -28,8 +42,7 @@ router.post('/register',
   body('email').exists().isEmail().isLength({ max: 50, min: 3 }).toLowerCase().trim(),
   body('name').exists().isString().isLength({ max: 50, min: 3 }).toLowerCase().trim(),
   body('password').exists().isString().isLength({ max: 20, min: 5 }).trim(),
-  body('address').exists().isString().isLength({ max: 200, min: 5 }).trim(),
-  body('user_type').exists().isIn(['manufacturer', 'transporter']),
+  body('dob').exists().isInt(),
   validate,
   async function (req: Request, res: Response, next: NextFunction) {
     try {
@@ -89,7 +102,7 @@ router.post('/login',
       // add an access_token cookie in the frontend will get validated to autherize some url
       res.cookie("access_token", token)
 
-      return res.status(201).json({ token, user: checkUser })
+      return res.status(200).json({ token, user: checkUser })
     } catch (err) {
       return res.status(500).json({ msg: 'Some internal error occured', err })
     }
