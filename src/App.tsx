@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import AuthPage from "./AuthPage"
+import AuthPage from "./components/AuthPage"
 import axios from "axios"
-import Table from "./Table"
+import Table from "./components/Table"
 
 export default function App() {
 

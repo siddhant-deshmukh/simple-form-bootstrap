@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useCallback, useState } from "react";
-import { IUser } from "./App";
+import { IUser } from "../App";
 
 const AuthPage = ({ setUser }: {
   setUser: React.Dispatch<React.SetStateAction<IUser | null>>
