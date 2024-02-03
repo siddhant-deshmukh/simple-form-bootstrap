@@ -1,12 +1,136 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/* Form page styles */
 .special-bg {
-  background-image: linear-gradient(to bottom, #007281ea, #05d7d0); 
+  background-image: linear-gradient(to bottom, #007281ea, #05d7d0);
+}
+
+
+#form-signbord {
+  position: absolute;
+  background-color: #00F5E1;
+  width: 200px;
+  margin-bottom: 16px;
+  left: 112px;
+  top: -20px;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Header intro section */
+#user-logo {
+  width: 112px;
+  height: 112px;
+  z-index: 10;
+  color: #abb2c9;
+  margin-top: 40px;
+}
+
+#bg-pattern {
+  object-fit: fill;
+  top: 20px;
+}
+
+form {
+  width: 425px;
+}
+/* Input  */
+svg.svg-icon {
+  width: 24px;
+  height: 24px;
+}
+.input-container {
+  display: flex;
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: 28px;
+  border-radius: 8px;
+  background-color: #414b61;
+}
+
+.input-container>input {
+  outline: none;
+  padding-left: 12px;
+  padding-right: 12px;
+  color: white;
+  background-color: transparent;
+  width: 100%;
+  border: none;
+}
+.input-container>input::placeholder {
+  color: rgb(209 213 219);
+}
+.icon-container {
+  padding-left: 8px;
+  padding-right: 8px;
+  border-right: 1px solid rgb(156 163 175);
+}
+
+/* Footer */
+button.underline-hover{
+  margin-left: 8px;
+  margin-right: 8px;
+  font-size: 15px;
+  background-color: transparent;
+}
+
+
+/* Tanle */
+#the_table {
+  border: lightgray;
+}
+#the_table > thead {
+  text-transform: uppercase;
+  color: rgb(55 65 81);
+  background-color: rgb(249 250 251);
+}
+tr > td , tr > th {
+  padding: 16px;
 }
 
 .bg-gray {
-  background-image: linear-gradient(to top, #1F2C4F, #013F5C); 
+  background-image: linear-gradient(to top, #1F2C4F, #013F5C);
+  color: #7A839E;
+}
+.text-cyan {
+  color: #00F5E1
 }
 
+
+
+#input-cont {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 48px;
+  padding-bottom: 28px;
+  max-width: 340px;
+}
+
+
+
+.transparent {
+  background-color: transparent;
+}
+.border-free {
+  border: none;
+  outline: none;
+}
+
+.underline-hover:hover {
+  text-decoration-line: underline;
+}
+
+
+.text-sm {
+  font-size: 0.875rem/* 14px */;
+  line-height: 1.25rem/* 20px */;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.rounded-full {
+  border-radius: 9999px;
+}
